@@ -15,3 +15,14 @@ fn main() {
 
     staircase(n);
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_staircase() {
+        let result = staircase(4);
+        assert_eq!(result.len(), 4);
+    }
+}
