@@ -1,6 +1,4 @@
-use std::io;
-
-fn gradingStudents(grades: Vec<i32>) -> Vec<i32> {
+pub fn grading_students(grades: Vec<i32>) -> Vec<i32> {
     grades
         .into_iter()
         .map(|grade| {
@@ -18,23 +16,14 @@ fn gradingStudents(grades: Vec<i32>) -> Vec<i32> {
         .collect()
 }
 
-fn main() {
-    let mut input = String::new();
-    io::stdin().read_line(&mut input).unwrap();
-    let n: usize = input.trim().parse().unwrap();
+#[cfg(test)]
+mod tests {
+    use super::*;
 
-    let mut grades = Vec::new();
-
-    for _ in 0..n {
-        input.clear();
-        io::stdin().read_line(&mut input).unwrap();
-        let grade: i32 = input.trim().parse().unwrap();
-        grades.push(grade);
-    }
-
-    let result = gradingStudents(grades);
-
-    for grade in result {
-        println!("{}", grade);
+    #[test]
+    fn test_grading_students() {
+        let input = vec![73, 67, 38, 33];
+        let expected = vec![75, 67, 40, 33];
+        assert_eq!(grading_students(input), expected);
     }
 }
